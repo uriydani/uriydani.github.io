@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Uri &amp; Dani — Dupla Creativa</title>
+  <meta name="description" content="Uri & Dani, dupla creativa. Dirección de arte y redacción. Videocasos, campañas y content.">
+  <meta property="og:title" content="Uri & Dani — Dupla Creativa">
+  <meta property="og:image" content="assets/brand/duo-bw.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23C2182B' d='M16 1l3.5 11 11.5.3-9.3 7 3.5 11.2L16 23.6l-9.2 6.9 3.5-11.2-9.3-7L12.5 12z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=UnifrakturMaguntia&family=Yellowtail&family=Homemade+Apple&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<svg class="defs" aria-hidden="true" width="0" height="0">
+  <filter id="ink" x="-15%" y="-15%" width="130%" height="130%">
+    <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="3" seed="4" result="grain"/>
+    <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3.4 2.3" result="holes"/>
+    <feComposite in="SourceGraphic" in2="holes" operator="in" result="speckled"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="9" result="warp"/>
+    <feDisplacementMap in="speckled" in2="warp" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <symbol id="star" viewBox="0 0 100 100"><path d="M50 0l11 35 37 1-30 22 11 36-29-22-30 22 11-36L2 36l37-1z"/></symbol>
+  <symbol id="burst" viewBox="0 0 200 120"><path d="M8 62l24-14-10-24 30 6 10-26 22 20 26-22 8 26 32-12-4 28 28 8-22 18 20 24-32 0 4 28-28-16-18 24-18-24-28 14 0-28-32 2 18-24z"/></symbol>
+</svg>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a class="nav__logo" href="#hero" aria-label="Uri & Dani, volver arriba">
+    <svg class="nav__star" viewBox="0 0 100 100" aria-hidden="true"><use href="#star"/></svg>
+    <span>Uri &amp; Dani</span>
+  </a>
+  <nav class="nav__links" aria-label="Secciones">
+    <a href="#laburos" data-sound="click">Laburos</a>
+    <a href="#content" data-sound="click">Content</a>
+    <a href="#nosotros" data-sound="click">Nosotros</a>
+    <a href="#contacto" data-sound="click">Contacto</a>
+  </nav>
+  <button class="sound-btn" data-sound-toggle aria-pressed="true" aria-label="Sonido">
+    <svg viewBox="0 0 100 100" class="sound-btn__ring" aria-hidden="true">
+      <defs><path id="ringpath" d="M50 50m-37 0a37 37 0 1 1 74 0a37 37 0 1 1-74 0"/></defs>
+      <text><textPath href="#ringpath" class="sound-btn__label">SONIDO ON · SONIDO ON · SONIDO ON ·</textPath></text>
+    </svg>
+    <span class="sound-btn__core" aria-hidden="true"></span>
+  </button>
+  <button class="nav__burger" aria-expanded="false" aria-controls="navpanel" aria-label="Abrir menú"><span></span><span></span></button>
+</header>
+<div class="navpanel" id="navpanel" hidden>
+  <a href="#laburos">Laburos</a>
+  <a href="#content">Content</a>
+  <a href="#nosotros">Nosotros</a>
+  <a href="#contacto">Contacto</a>
+</div>
+
+<main>
+
+<!-- ============ 01 HERO — CARTEL ============ -->
+<section class="hero" id="hero" aria-label="Uri & Dani, dupla creativa">
+  <div class="poster" id="poster">
+    <div class="poster__sheet">
+      <p class="poster__kicker"><span>Dupla creativa</span><i aria-hidden="true"></i><span>Buenos Aires × Lima</span></p>
+
+      <h1 class="poster__title">
+        <span class="w">Ur<span class="starred">i<svg class="star-on"><use href="#star"/></svg></span></span>
+        <span class="amp">&amp;</span>
+        <span class="w"><span class="starred">D<svg class="star-on star-on--b"><use href="#star"/></svg></span>ani</span>
+      </h1>
+
+      <div class="poster__stage">
+        <div class="oval" aria-hidden="true"><div class="oval__dash"></div></div>
+        <div class="duo">
+          <img src="assets/brand/duo-bw.png" alt="Dani y Uri, foto analógica en blanco y negro" width="4500" height="3000">
+        </div>
+        <span class="callout callout--dani">Redacción</span>
+        <span class="callout callout--uri">Dirección de arte</span>
+        <span class="burst" aria-hidden="true"><svg viewBox="0 0 200 120"><use href="#burst"/></svg><b>¡Videocasos!</b></span>
+        <svg class="deco-star deco-star--1" aria-hidden="true"><use href="#star"/></svg>
+        <svg class="deco-star deco-star--2" aria-hidden="true"><use href="#star"/></svg>
+        <svg class="deco-star deco-star--3" aria-hidden="true"><use href="#star"/></svg>
+      </div>
+
+      <p class="poster__script"><svg class="script-star" viewBox="0 0 100 100" aria-hidden="true"><use href="#star"/></svg><span>Escribinos si nos ves...</span></p>
+    </div>
+    <div class="tabs" id="tabs" role="group" aria-label="Papelitos con nuestro contacto"></div>
+  </div>
+  <a class="scroll-cue" href="#laburos">Laburos <span aria-hidden="true">↓</span></a>
+</section>
+
+<!-- ============ 02 LABUROS ============ -->
+<section class="section laburos" id="laburos" aria-labelledby="laburos-title">
+  <header class="section-head section-head--center reveal">
+    <p class="kicker"><span>Laburos</span><i aria-hidden="true"></i><span>7 estampillas</span></p>
+    <h2 id="laburos-title" class="display">La Colección</h2>
+  </header>
+  <div class="album reveal" id="album"><!-- JS --></div>
+</section>
+
+<!-- ============ 03 CONTENT ============ -->
+<section class="section content" id="content" aria-labelledby="content-title">
+  <header class="section-head section-head--center reveal">
+    <p class="kicker"><span>Content</span><i aria-hidden="true"></i><span>Talentos y marcas</span></p>
+    <h2 id="content-title" class="display">Content</h2>
+    <p class="lede">Piezas cortas, verticales y con sonido. Tocá una para escucharla.</p>
+  </header>
+  <div class="vgrid" id="vgrid"><!-- JS --></div>
+</section>
+
+<!-- ============ 04 NOSOTROS ============ -->
+<section class="section nosotros" id="nosotros" aria-labelledby="nos-title">
+  <header class="section-head section-head--center reveal">
+    <p class="kicker"><span>Nosotros</span><i aria-hidden="true"></i><span>Declaración de aduana</span></p>
+    <h2 id="nos-title" class="display">Quiénes Somos</h2>
+  </header>
+
+  <div class="fichas">
+    <article class="ficha" data-stampin style="--rot:-1.4deg">
+      <header class="ficha__head">
+        <span class="ficha__code">CN 22</span>
+        <span>Declaración de aduana<br><small>Customs declaration</small></span>
+        <span class="ficha__num">Nº 001</span>
+      </header>
+      <div class="ficha__body">
+        <figure class="ficha__photo oldphoto" style="--o: 37% 42%"><img src="assets/brand/fotos/uri.jpg" alt="Retrato de Uri"><figcaption>Remitente 1</figcaption></figure>
+        <div class="ficha__fields">
+          <p class="ficha__name">Uri</p>
+          <dl>
+            <div><dt>Nombre</dt><dd>Uriel Borits</dd></div>
+            <div><dt>Rol</dt><dd>Dirección de arte</dd></div>
+            <div><dt>Origen</dt><dd>Buenos Aires, Argentina</dd></div>
+            <div><dt>Especialidad</dt><dd>Videocasos</dd></div>
+            <div><dt>Formación</dt><dd>Universidad de Palermo · Brother</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="ficha__checks">
+        <span><i class="box is-on"></i>Regalo</span><span><i class="box is-on"></i>Ideas</span><span><i class="box"></i>Muestra comercial</span><span><i class="box is-on"></i>Videocasos</span>
+      </div>
+      <footer class="ficha__links"><a href="#" data-pending>Portfolio</a><a href="#" data-pending>Instagram</a><a href="#" data-pending>LinkedIn</a></footer>
+      <div class="rubber" data-restamp style="--rot:-9deg; --x:24%; --y:68%"><span>Aprobado<small>sin observaciones</small></span></div>
+    </article>
+
+    <article class="ficha" data-stampin style="--rot:1.2deg">
+      <header class="ficha__head">
+        <span class="ficha__code">CN 22</span>
+        <span>Declaración de aduana<br><small>Customs declaration</small></span>
+        <span class="ficha__num">Nº 002</span>
+      </header>
+      <div class="ficha__body">
+        <figure class="ficha__photo oldphoto" style="--o: 40% 42%"><img src="assets/brand/fotos/dani.jpg" alt="Retrato de Dani"><figcaption>Remitente 2</figcaption></figure>
+        <div class="ficha__fields">
+          <p class="ficha__name">Dani</p>
+          <dl>
+            <div><dt>Nombre</dt><dd>Daniella De Mario</dd></div>
+            <div><dt>Rol</dt><dd>Redacción</dd></div>
+            <div><dt>Origen</dt><dd>Perú</dd></div>
+            <div><dt>Especialidad</dt><dd>Contenido</dd></div>
+            <div><dt>Formación</dt><dd>IPP – Instituto Peruano de Publicidad · Brother</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="ficha__checks">
+        <span><i class="box is-on"></i>Regalo</span><span><i class="box is-on"></i>Textos</span><span><i class="box"></i>Documentos</span><span><i class="box is-on"></i>Contenido</span>
+      </div>
+      <footer class="ficha__links"><a href="#" data-pending>Portfolio</a><a href="#" data-pending>Instagram</a><a href="#" data-pending>LinkedIn</a></footer>
+      <div class="rubber rubber--oval" data-restamp style="--rot:7deg; --x:24%; --y:68%"><span>Revisado<small>sin faltas de ortografía</small></span></div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 05 CONTACTO ============ -->
+<section class="section contacto" id="contacto" aria-labelledby="contact-title">
+  <header class="section-head section-head--center reveal">
+    <p class="kicker"><span>Contacto</span><i aria-hidden="true"></i><span>Por correo, claro</span></p>
+    <h2 id="contact-title" class="display">Escribinos</h2>
+  </header>
+
+  <div class="postcard-stage reveal">
+    <div class="postcard" id="postcard">
+      <div class="postcard__shadow" aria-hidden="true"></div>
+      <div class="postcard__inner" id="postcardInner">
+        <div class="postcard__face postcard__front">
+          <p class="greet">Saludos desde</p>
+          <p class="big-letters" aria-label="Uri y Dani"><span>URI</span><em>&amp;</em><span>DANI</span></p>
+          <p class="greet greet--sub">Dirección de arte · Redacción</p>
+          <button class="flip-btn" data-flip><span>Dala vuelta</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 2v5h-5M6 22v-5h5"/></svg></button>
+        </div>
+        <div class="postcard__face postcard__back">
+          <div class="pc-left">
+            <p class="pc-hand">Hola Uri &amp; Dani,<br>tengo un brief que<br>no me deja dormir...</p>
+            <a class="pc-mail" href="mailto:hola@uriydani.com" data-mail>hola@uriydani.com</a>
+            <p class="pc-small">Respondemos rápido. Más rápido que el correo, seguro.</p>
+            <button class="flip-btn flip-btn--back" data-flip>↺ Ver el frente</button>
+          </div>
+          <div class="pc-divider" aria-hidden="true"></div>
+          <div class="pc-right">
+            <div class="pc-stampbox" id="stampBox"><span class="pc-stampbox__txt">Pegá la estampilla para enviar</span></div>
+            <ul class="pc-address">
+              <li><span>Para</span>Uri &amp; Dani</li>
+              <li><span>IG</span><a href="#" data-pending>@uriydani</a></li>
+              <li><span>In</span><a href="#" data-pending>/in/uriel-borits</a></li>
+              <li><span>In</span><a href="#" data-pending>/in/daniella-de-mario</a></li>
+              <li><span>De</span>Buenos Aires · Lima</li>
+            </ul>
+            <button class="mini-stamp" id="miniStamp" aria-label="Pegar estampilla y escribirnos un mail">
+              <span class="mini-stamp__body"><span class="mini-stamp__art"><img src="assets/brand/duo-bw.png" alt=""></span></span>
+              <span class="mini-stamp__hint">← Tocame</span>
+            </button>
+          </div>
+          <div class="pc-postmark" id="pcPostmark" aria-hidden="true">
+            <svg viewBox="0 0 260 120"><g filter="url(#ink)">
+              <circle cx="60" cy="60" r="52"/><circle cx="60" cy="60" r="40"/>
+              <text x="60" y="56" text-anchor="middle" class="pm-t">ENVIADO</text>
+              <text x="60" y="74" text-anchor="middle" class="pm-t pm-t--sm">BS.AS.</text>
+              <path d="M120 30q17-12 34 0t34 0 34 0 34 0M120 52q17-12 34 0t34 0 34 0 34 0M120 74q17-12 34 0t34 0 34 0 34 0M120 96q17-12 34 0t34 0 34 0 34 0"/>
+            </g></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" id="footer">
+  <div class="footer__stamps">
+    <div class="fstamp fstamp--circle" data-stampin data-restamp style="--rot:-12deg">
+      <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="fring" d="M100 100m-74 0a74 74 0 1 1 148 0a74 74 0 1 1-148 0"/></defs>
+        <g filter="url(#ink)"><circle cx="100" cy="100" r="94"/><circle cx="100" cy="100" r="58"/>
+        <text><textPath href="#fring">URI &amp; DANI · DUPLA CREATIVA · URI &amp; DANI · DUPLA CREATIVA ·</textPath></text>
+        <use href="#star" x="78" y="78" width="44" height="44"/></g></svg>
+    </div>
+    <div class="fstamp fstamp--rect" data-stampin data-restamp style="--rot:6deg"><span>Uri &amp; Dani</span><small>Correo creativo · Certificado</small></div>
+    <button class="fstamp fstamp--sound" data-sound-toggle data-stampin aria-pressed="true" aria-label="Sonido" style="--rot:-4deg">
+      <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="sring" d="M100 100m-70 0a70 70 0 1 1 140 0a70 70 0 1 1-140 0"/></defs>
+        <circle cx="100" cy="100" r="94"/>
+        <text><textPath href="#sring" class="sound-btn__label">SONIDO ON · SONIDO ON · SONIDO ON ·</textPath></text></svg>
+      <span class="fstamp__clic">Clic</span>
+    </button>
+    <div class="fstamp fstamp--oval" data-stampin data-restamp style="--rot:10deg"><span>Uri &amp; Dani</span><small>Bs. As. — Lima — 2026</small></div>
+  </div>
+
+  <nav class="footer__grid" aria-label="Links">
+    <a href="#contacto" data-sound="click"><small>01</small>Contacto</a>
+    <a href="#" data-pending data-sound="click"><small>02</small>Instagram</a>
+    <a href="#" data-pending data-sound="click"><small>03</small>LinkedIn Uri</a>
+    <a href="#" data-pending data-sound="click"><small>04</small>LinkedIn Dani</a>
+    <a href="#" data-pending data-sound="click"><small>05</small>Behance</a>
+    <a href="#hero" data-sound="click"><small>06</small>Volver arriba ↑</a>
+  </nav>
+
+  <div class="marquee" aria-label="Servicios: dirección de arte, redacción, videocasos, content, campañas">
+    <div class="marquee__track" aria-hidden="true">
+      <span>Dirección de arte</span><span>Redacción</span><span>Videocasos</span><span>Content</span><span>Campañas</span>
+      <span>Dirección de arte</span><span>Redacción</span><span>Videocasos</span><span>Content</span><span>Campañas</span>
+    </div>
+  </div>
+  <div class="cenefa" aria-hidden="true"></div>
+  <p class="footer__legal"><span>© 2026 Uri &amp; Dani</span><span>Hecho a mano</span><span>Ningún sello fue dañado</span></p>
+</footer>
+
+<!-- ============ OVERLAYS ============ -->
+<div class="scrim" id="scrim" hidden></div>
+<div class="win" id="projectWin" role="dialog" aria-modal="true" aria-labelledby="ppTitle" hidden>
+  <button class="x-btn" data-close aria-label="Cerrar proyecto">✕</button>
+  <div class="win__stage" id="winStage"></div>
+</div>
+<div class="player" id="player" role="dialog" aria-modal="true" aria-label="Video" hidden>
+  <button class="x-btn" data-close aria-label="Cerrar video">✕</button>
+  <div class="player__frame" id="playerFrame"></div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

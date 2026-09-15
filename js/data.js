@@ -38,7 +38,7 @@ window.SITE = {
       stamp: { kind: 'png', src: 'assets/stamps/pelota.png', w: 340, rot: -1.2 },
       cover: 'assets/covers/pelota.jpg', coverPos: '50.5% 48%', coverZoom: 1.55,
       board: ['assets/proyectos/pelota/board.jpg'], extras: [],
-      video: 'assets/proyectos/pelota/video.mov',
+      video: 'assets/proyectos/pelota/video.mp4',
       lead: 'Cuando tus pelotas están así, no podés jugar.',
       note: 'Presentado en Premios Obrar Estudiantes 2025'
     },

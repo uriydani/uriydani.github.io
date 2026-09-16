@@ -415,7 +415,12 @@ a { color: inherit; }
 .flip-btn--back { margin-top: auto; align-self: start; font-size: 10.5px; padding: 8px 14px; }
 .pc-left { display: flex; flex-direction: column; min-width: 0; }
 .pc-hand { font-family: var(--f-hand); font-size: clamp(13px, 1.9vw, 21px); line-height: 2; color: #1F2B55; margin: 0; background: repeating-linear-gradient(transparent 0 calc(2em - 1px), rgba(22,19,15,.22) calc(2em - 1px) 2em); }
-.pc-mail { font-family: var(--f-display); font-size: clamp(22px, 4.2vw, 50px); line-height: 1; margin: clamp(10px, 2vw, 22px) 0 8px; text-decoration: none; word-break: break-all; color: var(--red); }
+.pc-mails { margin: clamp(10px, 2vw, 22px) 0 8px; }
+.pc-mail { display: block; font-family: var(--f-display); font-size: clamp(17px, 2.5vw, 30px); line-height: 1.02; text-decoration: none; word-break: break-all; color: var(--red); }
+.pc-mail + .pc-mail { margin-top: 2px; }
+.pc-mail:hover { text-decoration: underline; }
+.pc-copy { margin-top: 8px; font-family: var(--f-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: inherit; background: none; border: 1.5px solid currentColor; padding: 5px 10px; cursor: pointer; opacity: .75; transition: background .2s, color .2s, opacity .2s; }
+.pc-copy:hover { opacity: 1; background: var(--red); border-color: var(--red); color: var(--cream-hi); }
 .pc-small { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; margin: 0; opacity: .6; }
 .pc-divider { background: var(--ink); opacity: .45; }
 .pc-right { position: relative; display: flex; flex-direction: column; min-width: 0; }

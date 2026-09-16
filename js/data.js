@@ -2,7 +2,24 @@
    CONTENIDO DEL SITIO
    ========================================================= */
 window.SITE = {
-  mail: 'hola@uriydani.com', // PENDIENTE: mail real de la dupla
+  /* ---------- CONTACTO ----------
+     mails      → los dos, en orden
+     mailCopy   → lo que se copia al portapapeles (pegable en el "Para" de Gmail)
+     mailto     → href de los botones de mail (abre con los dos destinatarios)
+  */
+  mails: ['uborits@gmail.com', 'contacto.danidemario@gmail.com'],
+  get mailCopy() { return this.mails.join(', '); },
+  get mailto() { return 'mailto:' + this.mails.join(','); },
+
+  wa: {
+    uri:  { label: '+54 9 11 6543 4316', href: 'https://wa.me/5491165434316' },
+    dani: { label: '+54 9 11 3802 1422', href: 'https://wa.me/5491138021422' }
+  },
+  social: {
+    igDani:   'https://www.instagram.com/danidemario/',
+    inUri:    'https://www.linkedin.com/in/uriborits/',
+    inDani:   'https://www.linkedin.com/in/daniella-de-mario-campos-b0bb431ab/'
+  },
 
   /* ---------- LABUROS ----------
      stamp.kind:
@@ -96,8 +113,8 @@ window.SITE = {
     { title: 'Crocs', who: 'Crocs', by: 'Dani', src: 'assets/content/crocs.mp4' },
     { title: 'Leuthe 02', who: 'Leuthe', by: 'Dani', src: 'assets/content/leuthe-2.mp4' },
     { title: 'Campaña OE', who: 'OE', by: 'Dani', src: 'assets/content/campana-oe.mp4' },
-    { title: 'Pieza 05', who: 'A confirmar', by: 'Dani', src: 'assets/content/img-9214.mp4' },
-    { title: 'Pieza 06', who: 'A confirmar', by: 'Dani', src: 'assets/content/content-wa.mp4' },
+    { title: 'Lollapalooza', who: 'Lollapalooza', by: 'Dani', src: 'assets/content/img-9214.mp4' },
+    { title: 'Maybelline', who: 'Maybelline', by: 'Dani', src: 'assets/content/content-wa.mp4' },
     { title: 'Me robaron', who: 'Lyna', by: 'Uri', src: 'assets/content/lyna-me-robaron.mp4' },
     { title: 'Mandarina muestra su cara', who: 'Lyna', by: 'Uri', src: 'assets/content/lyna-mandarina.mp4' }
   ]

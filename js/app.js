@@ -4,7 +4,8 @@
 (() => {
   'use strict';
 
-  const { projects, content, mail } = window.SITE;
+  const { projects, content } = window.SITE;
+  const MAILS = window.SITE.mails, MAIL_COPY = window.SITE.mailCopy, MAILTO = window.SITE.mailto;
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -93,6 +94,28 @@
   document.addEventListener('click', e => {
     const a = e.target.closest('a[data-pending]');
     if (a) { e.preventDefault(); toast('Link pendiente'); }
+  });
+
+  /* Copia los DOS mails separados por coma: pegado en el campo "Para" de Gmail
+     (o de cualquier cliente) se convierte en dos destinatarios. */
+  function copyMails() {
+    const txt = MAIL_COPY;
+    const done = () => toast('Copiados los 2 mails — pegalos en el "Para"');
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(txt).then(done).catch(() => fallbackCopy(txt, done));
+    } else fallbackCopy(txt, done);
+  }
+  function fallbackCopy(txt, done) {
+    const ta = document.createElement('textarea');
+    ta.value = txt; ta.setAttribute('readonly', '');
+    ta.style.cssText = 'position:fixed;top:-1000px;opacity:0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done(); } catch (err) { toast(txt); }
+    ta.remove();
+  }
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-copy-mails]');
+    if (b) { e.preventDefault(); copyMails(); Sound.play?.('click'); }
   });
 
   let lockCount = 0;
@@ -207,7 +230,7 @@
       if (animate) t.style.animationDelay = i * 40 + 'ms';
       t.style.setProperty('--wob', (i % 2 ? -1.6 : 1.6) + 'deg');
       t.setAttribute('aria-label', 'Arrancar papelito con nuestro contacto');
-      t.innerHTML = `<span class="tab__txt">${i % 3 === 1 ? 'HOLA@URIYDANI' : '0800-URI-DANI'}</span>`;
+      t.innerHTML = `<span class="tab__txt">${i % 3 === 1 ? 'NUESTROS MAILS' : '0800-URI-DANI'}</span>`;
       if (!animate && PRE_TORN.includes(i)) { t.classList.add('is-torn'); t.tabIndex = -1; t.setAttribute('aria-hidden', 'true'); }
       tabsEl.appendChild(t);
       bindTab(t);
@@ -246,7 +269,7 @@
     document.body.appendChild(f);
     t.classList.add('is-torn'); t.tabIndex = -1;
     Sound.play('rip');
-    if (firstTear) { firstTear = false; navigator.clipboard?.writeText(mail).catch(() => {}); toast(`Copiado: ${mail}`); }
+    if (firstTear) { firstTear = false; copyMails(); }
     const next = $$('.tab:not(.is-torn)', tabsEl)[0];
     if (next && document.activeElement === t) next.focus();
     if (!next) setTimeout(() => buildTabs(true), 1400); // se reponen solos
@@ -672,7 +695,7 @@
       Sound.play('thunk');
       pm.classList.add('is-on');
       toast('Estampilla pegada. Abriendo tu mail…');
-      setTimeout(() => { location.href = `mailto:${mail}?subject=${encodeURIComponent('Hola Uri & Dani')}`; }, 900);
+      setTimeout(() => { location.href = `${MAILTO}?subject=${encodeURIComponent('Hola Uri & Dani')}`; }, 900);
     };
   });
 })();

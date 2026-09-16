@@ -121,9 +121,7 @@
   let lockCount = 0;
   function lock(on) {
     lockCount = Math.max(0, lockCount + (on ? 1 : -1));
-    const sbw = innerWidth - document.documentElement.clientWidth;
-    if (lockCount) { if (on) document.body.style.paddingRight = sbw + 'px'; document.body.classList.add('is-locked'); }
-    else { document.body.style.paddingRight = ''; document.body.classList.remove('is-locked'); }
+    document.body.classList.toggle('is-locked', lockCount > 0);
   }
 
   const dialogs = [];
@@ -144,6 +142,14 @@
       else if (!top.el.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
     }
   });
+
+  // Ejecuta fn cuando termina la animación, o por timeout si el browser la pausó (pestaña oculta)
+  function whenDone(anim, ms, fn) {
+    let called = false;
+    const run = () => { if (!called) { called = true; fn(); } };
+    anim.finished.then(run, run);
+    setTimeout(run, ms + 200);
+  }
 
   function tilt(el, target, max = 10) {
     if (reduced || !canHover) return;
@@ -398,16 +404,14 @@
     if (reduced) {
       el.classList.remove('is-pressed'); busy = false; winClose.focus({ preventScroll: true }); return;
     }
-    scrim.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 450, easing: 'ease' });
-    winClose.animate([{ opacity: 0, transform: 'scale(.6)' }, { opacity: 1, transform: 'none' }], { duration: 400, delay: 450, easing: EASE, fill: 'backwards' });
+    scrim.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 420, easing: 'ease-out' });
+    winClose.animate([{ opacity: 0, transform: 'scale(.7)' }, { opacity: 1, transform: 'none' }], { duration: 360, delay: 260, easing: EASE, fill: 'backwards' });
     stage.animate([
-      { transform: 'translateY(105vh) rotate(8deg)' },
-      { transform: 'translateY(-14px) rotate(-1.2deg)', offset: .72 },
-      { transform: 'translateY(0) rotate(0deg)' }
-    ], { duration: 820, easing: 'cubic-bezier(.2,.7,.2,1)', delay: 90 }).onfinish = () => {
-      busy = false; winClose.focus({ preventScroll: true });
-    };
-    setTimeout(() => el.classList.remove('is-pressed'), 380);
+      { opacity: 0, transform: 'translateY(42px) scale(.968)' },
+      { opacity: 1, transform: 'translateY(0) scale(1)' }
+    ], { duration: 620, easing: 'cubic-bezier(.16,1,.3,1)' });
+    whenDone(stage.getAnimations().at(-1), 620, () => { busy = false; winClose.focus({ preventScroll: true }); });
+    setTimeout(() => el.classList.remove('is-pressed'), 420);
   }
 
   function closeProject() {
@@ -416,12 +420,13 @@
     Sound.play('close');
     const done = () => { win.hidden = true; scrim.hidden = true; stage.innerHTML = ''; lock(false); busy = false; openerEl?.focus({ preventScroll: true }); };
     if (reduced) return done();
-    stage.animate([{ transform: 'none' }, { transform: 'translateY(105vh) rotate(-7deg)' }], { duration: 480, easing: 'cubic-bezier(.5,0,.75,0)', fill: 'forwards' });
-    winClose.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 200, fill: 'forwards' });
-    scrim.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 480, delay: 120, fill: 'forwards' }).onfinish = () => {
+    stage.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(26px) scale(.985)' }], { duration: 300, easing: 'cubic-bezier(.4,0,.7,1)', fill: 'forwards' });
+    winClose.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 180, fill: 'forwards' });
+    const fade = scrim.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 340, delay: 80, fill: 'forwards' });
+    whenDone(fade, 420, () => {
       stage.getAnimations().forEach(a => a.cancel()); winClose.getAnimations().forEach(a => a.cancel()); scrim.getAnimations().forEach(a => a.cancel());
       done();
-    };
+    });
   }
 
   function goProject(dir) {
@@ -429,12 +434,13 @@
     Sound.play('swish');
     current = (current + dir + projects.length) % projects.length;
     openerEl = stampEls[current];
-    const out = stage.animate([{ transform: 'none', opacity: 1 }, { transform: `translateX(${-dir * 30}%) rotate(${-dir * 3}deg)`, opacity: 0 }], { duration: reduced ? 1 : 260, easing: 'ease-in', fill: 'forwards' });
-    out.onfinish = () => {
+    const out = stage.animate([{ transform: 'none', opacity: 1 }, { transform: `translateX(${-dir * 12}%)`, opacity: 0 }], { duration: reduced ? 1 : 240, easing: 'cubic-bezier(.4,0,.7,1)', fill: 'forwards' });
+    whenDone(out, reduced ? 1 : 240, () => {
       stage.innerHTML = posterHTML(projects[current]);
       win.scrollTop = 0; out.cancel();
-      stage.animate([{ transform: `translateX(${dir * 30}%) rotate(${dir * 3}deg)`, opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: reduced ? 1 : 520, easing: EASE }).onfinish = () => { busy = false; };
-    };
+      const inAnim = stage.animate([{ transform: `translateX(${dir * 12}%)`, opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: reduced ? 1 : 480, easing: 'cubic-bezier(.16,1,.3,1)' });
+      whenDone(inAnim, reduced ? 1 : 480, () => { busy = false; });
+    });
   }
 
   stage.addEventListener('click', e => {
@@ -538,12 +544,13 @@
   function closePlayer() {
     popDialog(player);
     media?.pause();
-    player.animate([{ opacity: 1 }, { opacity: 0 }], { duration: reduced ? 1 : 200 }).onfinish = () => {
+    const out = player.animate([{ opacity: 1 }, { opacity: 0 }], { duration: reduced ? 1 : 200 });
+    whenDone(out, reduced ? 1 : 200, () => {
       media?.destroy(); media = null;
       player.hidden = true; playerFrame.innerHTML = ''; lock(false);
       playerFrom?.focus({ preventScroll: true });
       resumeGrid();
-    };
+    });
   }
   function wirePlayer(source) {
     const root = $('.pl', playerFrame), big = $('.pl__big', root);

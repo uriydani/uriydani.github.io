@@ -31,7 +31,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scrollbar-gutter: stable; }
 body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--f-serif); font-size: 18px; line-height: 1.45; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 body.is-locked { overflow: hidden; }
 img, video { max-width: 100%; display: block; }
@@ -211,7 +211,7 @@ a { color: inherit; }
    ========================================================= */
 .scrim { position: fixed; inset: 0; z-index: 900; background: rgba(22,19,15,.72); backdrop-filter: blur(4px); }
 .win { position: fixed; inset: 0; z-index: 940; overflow-y: auto; overscroll-behavior: contain; padding: clamp(20px, 5vh, 60px) var(--gutter) 60px; }
-.win__stage { position: relative; width: min(1120px, 100%); margin: 0 auto; }
+.win__stage { position: relative; width: min(1120px, 100%); margin: 0 auto; will-change: transform, opacity; }
 .x-btn { position: fixed; top: 18px; right: 18px; z-index: 990; width: 50px; height: 50px; border-radius: 50%; background: var(--cream-hi); color: var(--ink); font-size: 18px; display: grid; place-items: center; box-shadow: 0 6px 20px rgba(0,0,0,.3); transition: transform .3s var(--settle), background .2s, color .2s; }
 .x-btn:hover { transform: rotate(90deg); background: var(--red); color: var(--cream-hi); }
 

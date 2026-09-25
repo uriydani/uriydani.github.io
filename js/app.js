@@ -629,10 +629,10 @@
         <span class="vstamp__media"><video data-src="${c.src}" muted loop playsinline preload="none"></video>
           <span class="vstamp__sound" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM17 9a4 4 0 0 1 0 6M19.5 6.5a8 8 0 0 1 0 11"/></svg></span>
         </span>
-        <span class="vstamp__cap"><b>${String(i + 1).padStart(2, '0')}</b><span>${c.title}<em>${c.who} · Contenido por ${c.by}</em></span></span>
+        <span class="vstamp__cap"><b>${String(i + 1).padStart(2, '0')}</b><span>${c.title}<em>${c.who === c.title ? '' : c.who + ' · '}Contenido por ${c.by}</em></span></span>
       </span>`;
     b.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') Sound.play('peel'); });
-    b.addEventListener('click', () => { Sound.play('thunk'); openPlayer({ src: c.src }, true, b, { left: `Content ${String(i + 1).padStart(2, '0')} · ${c.who}`, right: `Contenido por ${c.by}` }); });
+    b.addEventListener('click', () => { Sound.play('thunk'); openPlayer({ src: c.src }, true, b, { left: `Content ${String(i + 1).padStart(2, '0')} · ${c.title}`, right: `Contenido por ${c.by}` }); });
     vgrid.appendChild(b);
   });
   const vidIO = new IntersectionObserver(entries => entries.forEach(en => {

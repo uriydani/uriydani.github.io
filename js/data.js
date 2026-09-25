@@ -111,11 +111,11 @@ window.SITE = {
   content: [
     { title: 'Leuthe 01', who: 'Leuthe', by: 'Dani', src: 'assets/content/leuthe-1.mp4' },
     { title: 'Crocs', who: 'Crocs', by: 'Dani', src: 'assets/content/crocs.mp4' },
-    { title: 'Leuthe 02', who: 'Leuthe', by: 'Dani', src: 'assets/content/leuthe-2.mp4' },
+    { title: 'Amazon Prime Video', who: 'Amazon Prime Video', by: 'Uri', src: 'assets/content/primevideo.mp4' },
     { title: 'Campaña OE', who: 'OE', by: 'Dani', src: 'assets/content/campana-oe.mp4' },
     { title: 'Lollapalooza', who: 'Lollapalooza', by: 'Dani', src: 'assets/content/img-9214.mp4' },
     { title: 'Maybelline', who: 'Maybelline', by: 'Dani', src: 'assets/content/content-wa.mp4' },
     { title: 'Me robaron', who: 'Lyna', by: 'Uri', src: 'assets/content/lyna-me-robaron.mp4' },
-    { title: 'Mandarina muestra su cara', who: 'Lyna', by: 'Uri', src: 'assets/content/lyna-mandarina.mp4' }
+    { title: 'Fernet Branca', who: 'Real time', by: 'Uri', src: 'assets/content/fernet-branca.mp4' }
   ]
 };
